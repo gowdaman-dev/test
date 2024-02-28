@@ -1,7 +1,7 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 function page() {
-  const [audiodata, setAudiodata] = React.useState('')
+  const [audiodata, setAudiodata] = useState('')
   useEffect(() => {
     fetch('/api/reader', {
       method: 'POST',
@@ -13,13 +13,6 @@ function page() {
       setAudiodata(url)
     })
   }, [])
-  /*useEffect(() => {
-    Tts("hello there im gowdman").then((data) => {
-      console.log(data);
-      const url = URL.createObjectURL(data);
-      setAudiodata(url)
-    })
-  }, [])*/
   return (
     <div>
       {
