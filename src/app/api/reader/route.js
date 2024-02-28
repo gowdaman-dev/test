@@ -6,10 +6,10 @@ export async function POST(req, res) {
     const pdf = await textdata.arrayBuffer();
     const text = (await PdfParse(pdf)).text
     try {
-        if (text.length > 2800) {
+        if (text.length > 1500) {
             let textres =''
             let tempinit = 0
-            let tempfinal = 2800
+            let tempfinal = 1500
             let buffer = []
             let len = text.length
             while(tempfinal <= len){
@@ -29,11 +29,11 @@ export async function POST(req, res) {
                 buffer.push(bufferdata)
                 console.log(buffer);
                 tempinit = tempfinal + 1
-                if(tempfinal+2800 >len){
+                if(tempfinal+1500 >len){
                     tempfinal = len
                     continue
                 }
-                tempfinal += 2800
+                tempfinal += 1500
             }
             console.log(textres.length);
             console.log(len);
