@@ -62,3 +62,9 @@ export async function POST(req, res) {
         return new NextResponse({}, { status: 200 })
     }
 };
+
+export const config = {
+    api:{
+        responseLimit:false
+    }
+}
