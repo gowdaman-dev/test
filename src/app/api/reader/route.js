@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAudioBuffer } from "simple-tts-mp3";
 import PdfParse from "pdf-parse/lib/pdf-parse";
+export const dynamic = 'auto'
+export const dynamicParams = true
+export const revalidate = false
+export const fetchCache = 'auto'
+export const runtime = 'nodejs'
+export const preferredRegion = 'auto'
+export const maxDuration = 60
 export async function POST(req, res) {
     const textdata = await fetch('https://firebasestorage.googleapis.com/v0/b/react-auth-7f1fa.appspot.com/o/edulearn%2FFree_Test_Data_10.5MB_PDF.pdf?alt=media&token=bb8957a7-6740-49c7-8c99-a5c531fe56df')
     const pdf = await textdata.arrayBuffer();
@@ -62,9 +69,3 @@ export async function POST(req, res) {
         return new NextResponse({}, { status: 200 })
     }
 };
-
-export const config = {
-    api:{
-        responseLimit:false
-    }
-}
