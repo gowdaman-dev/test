@@ -1,23 +1,10 @@
-'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import Main from './Main'
+
 function page() {
-  const [audiodata, setAudiodata] = useState('')
-  useEffect(() => {
-    fetch('/api/reader', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'audio/flac'
-      }
-    }).then((data) => data.blob()).then((data) => {
-      const url = URL.createObjectURL(data);
-      setAudiodata(url)
-    })
-  }, [])
   return (
     <div>
-      {
-        audiodata ? <audio controls src={audiodata} /> : null
-      }
+      <Main />
     </div>
   )
 }
